@@ -13,8 +13,10 @@ $(document).ready(
             } else if (amount === ""){
                 alert("You need an amount");
             } else {
-                $("ul.items").append("<li>"+ item + " (" + amount + ")" + "</li>");
+                $("ul.items").append("<li>"+ item + " (" + amount + ")" + "<a>Delete</a>") + "</li>");
+                $("ul.items li").html("<a>Delete</a>");
                 $("input").val("");
+               
             }
         });
         

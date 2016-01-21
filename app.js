@@ -1,5 +1,4 @@
-$(document).ready(
-    function(){
+$(document).ready(function(){
         
         $('form').submit( function(event){
             event.preventDefault();
@@ -10,29 +9,26 @@ $(document).ready(
 
 
             if ( item === "" ){
-                alert("Your item is empty");
+                alert("You must enter an item!");
             } else if (amount === ""){
-                alert("You need an amount");
+                alert("Please enter an amount!");
             } else {
-                //Create list elements and buttons with specific ids
-
-                $("ul.items").append("<li> <span class='edit'>"+ item + "</span> (" + amount + ") " +
-                "<button class = 'dl'>Delete</button> | <button class ='md'>Mark Done</button>"+
-                 " | <button class = 'ed'>Edit</button></li>");
+                //Create list elements and buttons with specific classes
+                $("ul.items").append("<li> <span class='edit'>"+ item + "</span>" +"<span> ( " +amount + " )</span> " +
+                "<button class = 'dl'>Delete</button> | <button class ='md'>Mark as Bought</button>"+
+                 " | <button class = 'ed'>Edit</button></li></br>");
 
 
 
                 $("input").val(""); //Clear input after submit  
 
                 
+
                 //Strike completed items
                 $("button.md").on('click',function(){
-                    $(this).parent().addClass("strike");
-                    $(this).siblings().addClass("strike");
-                    $(this).addClass("strike");
-                    $(this).parent().css({"background-color":"green", "color":"#FFFFFF"});
-                    
-                }) 
+                    $(this).siblings("span").addClass("strike");
+                    $(this).siblings("span").css({"background-color":"green", "color":"#FFFFFF"});
+                });
 
 
                 //Delete an item from the list  
